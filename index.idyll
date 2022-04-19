@@ -1,0 +1,81 @@
+[meta title:"Programming_assignment12" description:"Short description of your project" /]
+
+[Header
+  fullWidth:true
+  title:"PROGRAMMING ASSIGNMENT-12"
+  subtitle:"Welcome to this article that explains about how we can analyze the data set containing the number of visitors for four different Museums"
+  author:"Supriya Jayadev Hiremath"
+  authorLink:"https://idyll-lang.org"
+  date:"Apr 14, 2022"
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+[var name:"x" value:0 /]
+
+## Scenario
+
+We have four different museums in the city Los Angeles, which are shown below:
+
+
+[img src:'https://i.imgur.com/pFYL8J1.png' style:`{height:'200px'}`/]
+
+We are analyzing a dataset which has information that contains number of monthly visitors to each museum.
+
+
+## Importing Dataset
+
+Now we will load our dataset from a local folder:
+
+[data name:"Visitors" source:"museum_visitors.csv" /]
+
+[Table data: Visitors /]
+
+# Plot Data for Chinese American Museum.
+
+1) This shows the trend in bar plot over the range of year 2014 till 2018.
+
+2) We plot the data using the built in function chart available in Idyll.
+
+[Chart type:"bar" data:`Visitors` domain:`[2013, 2018]` range:`[0, 8000]` x:"Date" y:"Chinese American Museum" /]
+
+We see in the above chart that number of visitors were the highest in the year 2016.
+
+##Importing data set that contains number of visitors in 2018 and 2017 in these four different Museums.
+
+[data name:"Visitors1" source:"museum_visitors1.csv" /]
+
+[Table data: Visitors1 /]
+
+# Plot Data for 2018 and 2017 using Vega Lite.
+
+1) Using the color interaction to see the difference between 2017 and 2018 visits for four different Museums.
+
+[var name:"colorBy" value:`{}` /]
+
+[IdyllVegaLite data: Visitors1 spec:`{
+  width: 500,
+  height: 400,
+  mark: "square",
+  encoding: {
+    x: {field: "Museum names", type: "nominal"}, 
+    y: {field: "Visitors", type: "temporal"},
+    color: colorBy
+  }
+}` /]
+
+Color by:
+ [button onClick:`colorBy = {field: 'Year', type: 'nominal'}` ]Year[/button]
+
+
+#Brief Description about our data set.
+
+This data set contains information relating to number of people visiting these four different museums in the Los Angeles city.
+This data visualization can be used by event managers and staff to understand when the inflow of visitors was high 
+and eventually learn about what factors might have led to the less visitors or learn about those time during when the flow of visitors was high.
+I got this data set from Kaggle. I did pivot the data to implement the color interaction for two different years as shown above.
+
+The First plot is a smaller picture only to understand the visitors for one particular Museum that is Chinese American Museum over a particular period of time.
+ 
+The Second plot is to understand which museum had the highest or the lowest number of visitors during the year 2017 and 2018.
+
