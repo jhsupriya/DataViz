@@ -13,3 +13,8 @@ Reference:
 3) Article reference
  https://ourworldindata.org/drug-use
  
+ DATASET reference:
+ 
+ https://vizhub.healthdata.org/gbd-results/
+ We can use the above link to set our parameteres to extract data for the set parameters and then we will have to request for the csv file and a lin to download the data set will be sent to us on email. I have provided this csv file in the folder 'Dataset files for final project' present in this repository.
+ 
